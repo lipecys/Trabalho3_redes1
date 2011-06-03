@@ -1,0 +1,51 @@
+################################################################################
+Nesse tutorial vai ser explicado como criar um comandinho para fazer ssh sem
+precisar digitar o nome do servidor.
+################################################################################
+
+- Primeiro criamos um diretório que irá abrigar o script.
+$mkdir /home/usuario/bin
+
+- Nesse diretório colocaremos os scripts dos novos comandos. Como por exemplo,
+criamos o arquivo "ssh_meu" com o seguinte conteúdo:
+
+    #!/bin/bash
+
+    USER="fcl09"
+
+    if test $1 = "1"
+    then
+        ssh $USER@macalan.c3sl.ufpr.br
+    fi
+
+    if test $1 = "2"
+    then
+        ssh $USER@mumm.c3sl.ufpr.br
+    fi
+
+    if test $1 = "3"
+    then
+        ssh $USER@priorat.c3sl.ufpr.br
+    fi
+
+    if test $1 = "4"
+    then
+        ssh $USER@bowmore.c3sl.ufpr.br
+    fi
+
+- Salvamos esse arquivo e damos permissão de execução:
+$chmod +x ssh_meu
+
+- Quando o usuário executar o comando "ssh_meu 1", por exemplo, será executado
+um "ssh fcl09@@macalan.c3sl.ufpr.br"
+
+- Depois de criarmos esse arquivo temos que fazer com que o sistema "saiba" que
+ele existe. Para isso no acrescentamos a linha a seguir no arquivo
+"/home/usuario/.bashrc":
+
+export PATH=${PATH}:/home/usuario/bin/
+
+- Feito isso com um "echo $PATH" podemos verificar que o novo diretório foi
+adicionado com sucesso.
+
+- Agora o usuário pode executar o comando "ssh_meu <numero de 1 a 4>
