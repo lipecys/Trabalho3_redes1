@@ -1,33 +1,33 @@
 ################################################################################
 Primeiro commit:
 
-$mkdir Trabalho3_redes1
-$cd Trabalho3_redes1/
-$git init
-$touch README
-$git add README
-$git commit -m 'first commit'
-$git remote add origin git@github.com:lipecys/Trabalho3_redes1.git
-$git push -u origin master
+	$mkdir Trabalho3_redes1
+	$cd Trabalho3_redes1/
+	$git init
+	$touch README
+	$git add README
+	$git commit -m 'first commit'
+	$git remote add origin git@github.com:lipecys/Trabalho3_redes1.git
+	$git push -u origin master
 ################################################################################
 
 ################################################################################
 Para os próximos commits:
 Clonando o repositório para poder trabalhar nele:
-$git clone git@github.com:lipecys/Trabalho3_redes1
-$cd Trabalho3_redes1/
+	$git clone git@github.com:lipecys/Trabalho3_redes1
+	$cd Trabalho3_redes1/
 
 Aqui fazemos o commit do arquivo "fazer_um_commit":
-$git add fazer_um_commit
-$git commit -m 'Como fazer um commit'
+	$git add fazer_um_commit
+	$git commit -m 'Como fazer um commit'
 (ou executa um "git commit -a" que abre um editor para escrever a mensagem e
 comentários)
-$git push -u origin master
+	$git push -u origin master
 
 Quando deletamos um arquivo:
-$git add .
-$git commit -m 'deletando arquivos'
-$git push -u origin master
+	$git add .
+	$git commit -m 'deletando arquivos'
+	$git push -u origin master
 ################################################################################
 
 ################################################################################
@@ -37,6 +37,25 @@ Quando isso acontece, o processo (pelo menos o que encontrei) é meio chato.
 Primeiro fazemos um clone em outro diretório, daí fazemos um merge manual desses
 dois arquivos e então copiamos para o diretório onde estávamos trabalhando. E só
 aí fazemos o git add, o git commit e então o git push.
+################################################################################
+
+################################################################################
+Quando queremos fazer alterações que não temos certeza se estão certas:
+    $cd Trabalho3_redes1/
+
+Criando uma nova "raiz":
+    $git branch teste
+Apontando para a nova raiz:
+    $git checkout teste
+
+Depois de ter certeza que alteramos os arquivos corretamente, fazemos o merge
+dessas duas "raízes":
+	$git checkout master 
+	$git merge teste
+
+
+Para remover um "branch" fazemos:
+    $git branch -d teste
 ################################################################################
 
 ################################################################################
