@@ -1,3 +1,4 @@
+################################################################################
 Primeiro commit:
 
 $mkdir Trabalho3_redes1
@@ -8,8 +9,9 @@ $git add README
 $git commit -m 'first commit'
 $git remote add origin git@github.com:lipecys/Trabalho3_redes1.git
 $git push -u origin master
+################################################################################
 
-
+################################################################################
 Para os próximos commits:
 Clonando o repositório para poder trabalhar nele:
 $git clone git@github.com:lipecys/Trabalho3_redes1
@@ -18,26 +20,35 @@ $cd Trabalho3_redes1/
 Aqui fazemos o commit do arquivo "fazer_um_commit":
 $git add fazer_um_commit
 $git commit -m 'Como fazer um commit'
-(ou executa um "git commit -a" que abre um editor para escrever a mensagem e comentários)
+(ou executa um "git commit -a" que abre um editor para escrever a mensagem e
+comentários)
 $git push -u origin master
 
 Quando deletamos um arquivo:
 $git add .
 $git commit -m 'deletando arquivos'
 $git push -u origin master
+################################################################################
 
+################################################################################
+Fui dar um git push, o arquivo que alterei já tinha sido alterar e commitado por
+outra pessoa. Deu erro de merge, e agora?
+Quando isso acontece, o processo (pelo menos o que encontrei) é meio chato.
+Primeiro fazemos um clone em outro diretório, daí fazemos um merge manual desses
+dois arquivos e então copiamos para o diretório onde estávamos trabalhando. E só
+aí fazemos o git add, o git commit e então o git push.
+################################################################################
 
-
+################################################################################
 Desfazendo cagadas
 Temos um arquivo.
 Fazemos uma modificação nesse arquivo.
 Vemos que isso ficou pior que a versão que está no repositório.
 Então faz um novo clone em outro lugar, copia o arquivo antigo para a versão que
 estamos trabalhando e trabalha a partir daí.
+################################################################################
 
 ???????????????????????????????????????????????????????????????????????????????
 ??? Tem alguma forma de voltar para o estado anterior do repositório depois ???
 ??? de fazer um push com arquivos bichados                                  ???
 ???????????????????????????????????????????????????????????????????????????????
-
-e agora???
