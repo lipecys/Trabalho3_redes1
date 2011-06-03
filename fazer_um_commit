@@ -31,8 +31,8 @@ $git push -u origin master
 ################################################################################
 
 ################################################################################
-Fui dar um git push, o arquivo que alterei já tinha sido alterar e commitado por
-outra pessoa. Deu erro de merge, e agora?
+Fui dar um git push, o arquivo que alterei já tinha sido alterado e commitado
+por outra pessoa. Deu erro de merge, e agora?
 Quando isso acontece, o processo (pelo menos o que encontrei) é meio chato.
 Primeiro fazemos um clone em outro diretório, daí fazemos um merge manual desses
 dois arquivos e então copiamos para o diretório onde estávamos trabalhando. E só
@@ -52,3 +52,29 @@ estamos trabalhando e trabalha a partir daí.
 ??? Tem alguma forma de voltar para o estado anterior do repositório depois ???
 ??? de fazer um push com arquivos bichados                                  ???
 ???????????????????????????????????????????????????????????????????????????????
+
+
+
+
+De acordo com o "github" quando criamos um repositório novo:
+Global setup:
+ Download and install Git
+  git config --global user.name "Your Name"
+  git config --global user.email lipecys@gmail.com
+        
+
+Next steps:
+  mkdir Sistemas-Operacionais
+  cd Sistemas-Operacionais
+  git init
+  touch README
+  git add README
+  git commit -m 'first commit'
+  git remote add origin git@github.com:lipecys/Sistemas-Operacionais.git
+  git push -u origin master
+      
+
+Existing Git Repo?
+  cd existing_git_repo
+  git remote add origin git@github.com:lipecys/Sistemas-Operacionais.git
+  git push -u origin master
