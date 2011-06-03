@@ -1,0 +1,9 @@
+Clonando o repositório para poder trabalhar nele:
+git clone git@github.com:lipecys/Trabalho3_redes1
+cd Trabalho3_redes1/
+
+Aqui fazemos o commit do arquivo "fazer_um_commit":
+git add fazer_um_commit
+git commit -m 'Como fazer um commit'
+git remote add origin git@github.com:lipecys/Trabalho3_redes1.git
+git push -u origin master
