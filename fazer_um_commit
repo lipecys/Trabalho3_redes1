@@ -10,3 +10,4 @@ git commit -m 'Como fazer um commit'
 git remote add origin git@github.com:lipecys/Trabalho3_redes1.git
 
 git push -u origin master
+
