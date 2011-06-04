@@ -1,0 +1,30 @@
+################################################################################
+#                            Descrição do trabalho3                            #
+################################################################################
+
+- Implementar um chat entre 4 máquinas em um anel token ring sem prioridade
+  usando socket TCP;
+
+- Usar passagem de bastão temporizado
+    - Tempo de posse de bastão: 5 segundos;
+
+- Máquina que coloca dados no anel é quem tira os dados do anel
+    - Fazer aceitação viajando junto de carona com os dados;
+
+- Usuário pode digitar dados em qualquer máquina. Ele deve sempre especificar o
+  destino
+    - Após o usuário teclar "enter" a mensagem deve ser enviada;
+      (acréscimo <<FELIPE>>: só envia se estiver com o bastão...)
+    - Cada máquina que recebe a mensagem segura ela por 1 segundo antes de
+      retransmitir;
+    - Somente o destino mostra ela na tela;
+
+- Usar passagem antecipada de bastão
+    - não tem mensagem para transmitir, passa o bastão;
+
+=> Em duplas;
+=> Valor 1,0;
+=> Apresentação nos LABS;
+=> Rodar direto nas servidoras;
+
+################################################################################
