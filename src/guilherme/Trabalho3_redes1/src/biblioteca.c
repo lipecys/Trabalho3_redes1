@@ -24,42 +24,23 @@ void *insere_buffer(info_pkg *config_node) {
         char *buffer = (char *) malloc(tam_buffer * sizeof(char));
         int cont_caracteres = 0;
         char *string_final;
-        char destino;
-
-        printf("Especifique o destino (1 a 4):\n");
-        destino = getchar();
-
-        getchar();
-
-        printf("Digite a mensagem:\n");
-
 
         buffer[cont_caracteres] = getchar();
         while (buffer[cont_caracteres] != EOL)
         {
             cont_caracteres++;
             if ( cont_caracteres == tam_buffer )
-            {
+           {
                 tam_buffer *= 2;
                 buffer = (char *) realloc(buffer, tam_buffer * sizeof(char));
             }
             buffer[cont_caracteres] = getchar();
         }
 
-        /*
-        * criando uma string do tamanho da entrada lida
-        * O + 4 é porque precisamos dos seguintes bits de controle:
-        * - destino
-        * - origem
-        * - aceitação 
-        * - '\0' da string
-        */
-        string_final = (char *) malloc( (cont_caracteres + 4)* sizeof(char));
-        memcpy(string_final+3, buffer, cont_caracteres);
-        string_final[0] = destino;
-        string_final[1] = config_node->computer_number;
-        string_final[2] = '0';
-        string_final[cont_caracteres+3] = '\0';
+        // criando uma string do tamanho da entrada lida
+        string_final = (char *) malloc( cont_caracteres * sizeof(char));
+        memcpy(string_final, buffer, cont_caracteres);
+
 
         // Início região crítica
         sem_wait(&config_node->threads.empty);
@@ -73,7 +54,6 @@ void *insere_buffer(info_pkg *config_node) {
         pthread_mutex_unlock(&config_node->threads.mutex);
         sem_post(&config_node->threads.full);
         // Fim região crítica
-
 
         free(buffer);
     } while(CONTINUA);

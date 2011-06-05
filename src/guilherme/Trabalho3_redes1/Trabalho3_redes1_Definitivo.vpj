@@ -1,0 +1,160 @@
+<!DOCTYPE Project SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpj.dtd">
+<Project
+    Version="10.0"
+    VendorName="SlickEdit"
+    WorkingDir=".">
+    <Config
+        Name="Release"
+        OutputFile=""
+        CompilerConfigName="">
+        <Menu>
+            <Target
+                Name="Compile"
+                MenuCaption="&amp;Compile"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveCurrent"
+                RunFromDir="%rw">
+                <Exec/>
+            </Target>
+            <Target
+                Name="Build"
+                MenuCaption="&amp;Build"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec/>
+            </Target>
+            <Target
+                Name="Rebuild"
+                MenuCaption="&amp;Rebuild"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec/>
+            </Target>
+            <Target
+                Name="Debug"
+                MenuCaption="&amp;Debug"
+                SaveOption="SaveNone"
+                RunFromDir="%rw">
+                <Exec/>
+            </Target>
+            <Target
+                Name="Execute"
+                MenuCaption="E&amp;xecute"
+                SaveOption="SaveNone"
+                RunFromDir="%rw">
+                <Exec CmdLine='".exe"'/>
+            </Target>
+        </Menu>
+    </Config>
+    <CustomFolders>
+        <Folder
+            Name="Source Files"
+            Filters="*.c;*.C;*.cc;*.cpp;*.cp;*.cxx;*.c++;*.prg;*.pas;*.dpr;*.asm;*.s;*.bas;*.java;*.cs;*.sc;*.e;*.cob;*.html;*.rc;*.tcl;*.py;*.pl;*.d">
+        </Folder>
+        <Folder
+            Name="Header Files"
+            Filters="*.h;*.H;*.hh;*.hpp;*.hxx;*.inc;*.sh;*.cpy;*.if">
+        </Folder>
+        <Folder
+            Name="Resource Files"
+            Filters="*.ico;*.cur;*.dlg"/>
+        <Folder
+            Name="Bitmaps"
+            Filters="*.bmp"/>
+        <Folder
+            Name="Other Files"
+            Filters="">
+        </Folder>
+    </CustomFolders>
+    <Files AutoFolders="DirectoryView">
+        <Folder Name=".git">
+            <Folder Name="hooks">
+                <F N=".git/hooks/applypatch-msg.sample"/>
+                <F N=".git/hooks/commit-msg.sample"/>
+                <F N=".git/hooks/post-commit.sample"/>
+                <F N=".git/hooks/post-receive.sample"/>
+                <F N=".git/hooks/post-update.sample"/>
+                <F N=".git/hooks/pre-applypatch.sample"/>
+                <F N=".git/hooks/pre-commit.sample"/>
+                <F N=".git/hooks/pre-rebase.sample"/>
+                <F N=".git/hooks/prepare-commit-msg.sample"/>
+                <F N=".git/hooks/update.sample"/>
+            </Folder>
+            <Folder Name="info">
+                <F N=".git/info/exclude"/>
+            </Folder>
+            <Folder Name="logs">
+                <Folder Name="refs">
+                    <Folder Name="heads">
+                        <F N=".git/logs/refs/heads/master"/>
+                        <F N=".git/logs/refs/heads/trabalho"/>
+                    </Folder>
+                </Folder>
+                <F N=".git/logs/HEAD"/>
+            </Folder>
+            <Folder Name="objects">
+                <Folder Name="pack">
+                    <F N=".git/objects/pack/pack-6701793e6d0de3ac9a5bc898bfb4f07881936b25.idx"/>
+                    <F N=".git/objects/pack/pack-6701793e6d0de3ac9a5bc898bfb4f07881936b25.pack"/>
+                </Folder>
+            </Folder>
+            <Folder Name="refs">
+                <Folder Name="heads">
+                    <F N=".git/refs/heads/master"/>
+                    <F N=".git/refs/heads/trabalho"/>
+                </Folder>
+                <Folder Name="remotes">
+                    <Folder Name="origin">
+                        <F N=".git/refs/remotes/origin/HEAD"/>
+                    </Folder>
+                </Folder>
+            </Folder>
+            <F N=".git/config"/>
+            <F N=".git/description"/>
+            <F N=".git/HEAD"/>
+            <F N=".git/index"/>
+            <F N=".git/packed-refs"/>
+        </Folder>
+        <Folder Name="doc">
+            <F N="doc/.vazio"/>
+        </Folder>
+        <Folder Name="src">
+            <Folder Name="testes">
+                <Folder Name="fifo">
+                    <F N="src/testes/fifo/biblioteca.c"/>
+                    <F N="src/testes/fifo/biblioteca.h"/>
+                    <F N="src/testes/fifo/fifo.c"/>
+                    <F N="src/testes/fifo/fifo.h"/>
+                    <F N="src/testes/fifo/fifo.rar"/>
+                    <F N="src/testes/fifo/insere_remove.c"/>
+                    <F
+                        N="src/testes/fifo/Makefile"
+                        Type="Makefile"/>
+                </Folder>
+                <F N="src/testes/le_entrada.c"/>
+            </Folder>
+            <F N="src/biblioteca.c"/>
+            <F N="src/biblioteca.h"/>
+            <F N="src/client.c"/>
+            <F N="src/client.h"/>
+            <F N="src/fifo.c"/>
+            <F N="src/fifo.h"/>
+            <F N="src/main.c"/>
+            <F
+                N="src/Makefile"
+                Type="Makefile"/>
+            <F N="src/server.c"/>
+            <F N="src/server.h"/>
+            <F N="src/socket.c"/>
+            <F N="src/socket.h"/>
+        </Folder>
+        <F N="adicionar_atalho_ssh.txt"/>
+        <F N="fazer_um_commit"/>
+        <F N="README"/>
+        <F N="Trabalho3_redes1_Definitivo.vpj"/>
+        <F N="Trabalho3_redes1_Definitivo.vpw"/>
+        <F N="Trabalho3_redes1_Definitivo.vpwhist"/>
+    </Files>
+</Project>
