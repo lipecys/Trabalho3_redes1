@@ -7,12 +7,18 @@ info_pkg *inicializa_info(void) {
 
     cria_info->bastao = FALSE;
 
+    sem_init(&(cria_info->threads.full), 0, 0);
+    sem_init(&(cria_info->threads.empty), 0, MAX_BUFF_SIZE);
+
+    pthread_mutex_init(&(cria_info->threads.mutex), NULL);
+
+
     return cria_info;
 }
 
 
 /* Produtor insere no buffer */
-void *insere_buffer(produtor_consumidor *prod_cons) {
+void *insere_buffer(info_pkg *config_node) {
     do {
         int tam_buffer = 256;
         char *buffer = (char *) malloc(tam_buffer * sizeof(char));
@@ -37,16 +43,16 @@ void *insere_buffer(produtor_consumidor *prod_cons) {
 
 
         // Início região crítica
-        sem_wait(&prod_cons->empty);
-        pthread_mutex_lock(&prod_cons->mutex);
+        sem_wait(&config_node->threads.empty);
+        pthread_mutex_lock(&config_node->threads.mutex);
 
 
         // inserir novo item na fila
-        insere_lista_fim((objeto)string_final, prod_cons->mensagens);
+        insere_lista_fim((objeto)string_final, config_node->threads.mensagens);
 
 
-        pthread_mutex_unlock(&prod_cons->mutex);
-        sem_post(&prod_cons->full);
+        pthread_mutex_unlock(&config_node->threads.mutex);
+        sem_post(&config_node->threads.full);
         // Fim região crítica
 
         free(buffer);
@@ -56,41 +62,29 @@ void *insere_buffer(produtor_consumidor *prod_cons) {
 }
 
 /* Consumidor retira do buffer */
-void *retira_buffer(produtor_consumidor *prod_cons) {
+void *retira_buffer(info_pkg *config_node) {
     do {
         // Início região crítica
-        sem_wait(&prod_cons->full);
-        pthread_mutex_lock(&prod_cons->mutex);
+        sem_wait(&config_node->threads.full);
+        pthread_mutex_lock(&config_node->threads.mutex);
 
 
         // consome item da fila
-        if (prod_cons->mensagens->tamanho == 5)
+        if (config_node->threads.mensagens->tamanho == 5)
         {
-            while(!vazia_lista(prod_cons->mensagens))
+            while(!vazia_lista(config_node->threads.mensagens))
             {
                 /* <<FELIPE>> envia mensagem*/
-                printf("%s\n", (char *)remove_lista(prod_cons->mensagens));
+                printf("%s\n", (char *)remove_lista(config_node->threads.mensagens));
             }
         }
 
 
-        pthread_mutex_unlock(&prod_cons->mutex);
-        sem_post(&prod_cons->empty);
+        pthread_mutex_unlock(&config_node->threads.mutex);
+        sem_post(&config_node->threads.empty);
         // Fim região crítica
     } while(CONTINUA);
 
 
     pthread_exit((void*)1);
-}
-
-
-produtor_consumidor *cria_prod_cons(void) {
-    produtor_consumidor *prod_cons = (produtor_consumidor *) malloc(sizeof(produtor_consumidor));
-
-    sem_init(&(prod_cons->full), 0, 0);
-    sem_init(&(prod_cons->empty), 0, MAX_BUFF_SIZE);
-
-    pthread_mutex_init(&(prod_cons->mutex), NULL);
-
-    return prod_cons;
 }

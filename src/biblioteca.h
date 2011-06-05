@@ -25,24 +25,24 @@ typedef enum {
 
 /* Seção de Definições de Estruturas */
 typedef struct {
-    int sockfd;
-    const char *ip_address;
-    unsigned short int port;
-    unsigned char computer_number;
-    Boolean bastao;
-}info_pkg;
-
-typedef struct {
     sem_t full;
     sem_t empty;
     pthread_mutex_t mutex;
     lista *mensagens;
 }produtor_consumidor;
 
+typedef struct {
+    int sockfd;
+    const char *ip_address;
+    unsigned short int port;
+    unsigned char computer_number;
+    Boolean bastao;
+    produtor_consumidor threads;
+}info_pkg;
+
 info_pkg *inicializa_info(void);
 
-void *insere_buffer(produtor_consumidor *prod_cons);
-void *retira_buffer(produtor_consumidor *prod_cons);
-produtor_consumidor *cria_prod_cons(void);
+void *insere_buffer(info_pkg *config_node);
+void *retira_buffer(info_pkg *config_node);
 
 #endif /* Fim de BIBLIOTECA_H */
