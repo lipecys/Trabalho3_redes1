@@ -4,8 +4,8 @@
 # em anel.
 
 # Compilador, Opções de Compilação e Arquivos Fonte
-CSOURCES=main.c biblioteca.c socket.c
-CFLAGS=-Wall
+CSOURCES=main.c biblioteca.c fifo.c
+CFLAGS=-Wall -lpthread
 CC=gcc
 
 # Objetos do trabalho
