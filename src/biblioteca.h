@@ -32,16 +32,14 @@ typedef struct {
 }produtor_consumidor;
 
 typedef struct {
-    int sockfd;
+    char computer_number;
     const char *ip_address;
-    unsigned short int port;
-    unsigned char computer_number;
+    const char *port;    
     Boolean bastao;
     produtor_consumidor threads;
 }info_pkg;
 
 info_pkg *inicializa_info(void);
-
 void *insere_buffer(info_pkg *config_node);
 void *retira_buffer(info_pkg *config_node);
 

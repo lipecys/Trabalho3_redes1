@@ -47,9 +47,9 @@ int main(const int argc, const char *argv[]) {
             printf("número de servidor inválido\n");
     }
 
-    config_node->port = 10579;
+    config_node->port = "10579";
 
-    printf("IPADDRESS: %s PORT: %d NUMBER: %d BASTAO: %d\n", config_node->ip_address, config_node->port, config_node->computer_number, config_node->bastao);
+    printf("IPADDRESS: %s PORT: %s NUMBER: %d BASTAO: %d\n", config_node->ip_address, config_node->port, config_node->computer_number, config_node->bastao);
 
     pthread_create(&prod, NULL, (void *)&insere_buffer, (void*)config_node);
     pthread_create(&cons, NULL, (void*)&retira_buffer, (void*)config_node);

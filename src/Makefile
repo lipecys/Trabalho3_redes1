@@ -4,7 +4,7 @@
 # em anel.
 
 # Compilador, Opções de Compilação e Arquivos Fonte
-CSOURCES=main.c biblioteca.c fifo.c
+CSOURCES=main.c biblioteca.c socket.c fifo.c
 CFLAGS=-Wall -lpthread
 CC=gcc
 
