@@ -10,7 +10,6 @@
 #include <string.h>
 #include <stdint.h>
 #include "fifo.h"
-#include "biblioteca.h"
 
 #define CREATE_TOKEN 1
 

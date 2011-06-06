@@ -1,11 +1,12 @@
-#include "biblioteca.h"
+#include "server.h"
+#include "client.h"
 
 /* Função principal - Responsavel por repassar parâmetros e inicializar
  * as threads de leitura e escrita */
 int main(const int argc, const char *argv[]) {
     info_pkg *config_node = inicializa_info();
     pthread_t prod, cons;
-    int servidor;
+    int n_servidor;
 
     config_node->threads.mensagens = constroi_lista();
 
@@ -14,9 +15,9 @@ int main(const int argc, const char *argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    servidor = atoi(argv[1]);
+    n_servidor = atoi(argv[1]);
 
-    switch (servidor)
+    switch (n_servidor)
     {
         case 1:
             printf("1\n");
@@ -51,12 +52,11 @@ int main(const int argc, const char *argv[]) {
 
     printf("IPADDRESS: %s PORT: %s NUMBER: %d BASTAO: %d\n", config_node->ip_address, config_node->port, config_node->computer_number, config_node->bastao);
 
-    pthread_create(&prod, NULL, (void *)&insere_buffer, (void*)config_node);
-    pthread_create(&cons, NULL, (void*)&retira_buffer, (void*)config_node);
-
+    pthread_create(&prod, NULL, (void *)&cliente, (void*)config_node);
+    pthread_create(&cons, NULL, (void *)&servidor, (void*)config_node);
+    
     pthread_join(prod, NULL);
     pthread_join(cons, NULL);
 
-    //fecha_socket(config_node->sockfd);
     exit(EXIT_SUCCESS);
 }

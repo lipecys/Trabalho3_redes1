@@ -7,5 +7,5 @@
 #include "fifo.h"
 #include "socket.h"
 
-void * servidor (info_pkg *config_node);
+void *servidor (info_pkg *config_node);
 #endif /* Fim de SERVER_H */

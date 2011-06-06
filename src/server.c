@@ -2,15 +2,15 @@
 
 /* Função do Servidor - Utilizado para inserir mensagens no buffer e reenvia-las */
 void * servidor (info_pkg *config_node) {
-    client_server_info *server;
+    client_server_info * server;
     struct sockaddr_in cliaddr;
     socklen_t clilen;
     int newconn;
-
+    
     server = config_server(config_node->port);
     clilen = sizeof(cliaddr);
     newconn = accept(server->sockfd, (struct sockaddr *)&cliaddr, &clilen);
-
+    
     if (!fork()) {
         close(server->sockfd);
         while (TRUE) {

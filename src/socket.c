@@ -34,15 +34,16 @@ client_server_info *config_client(const char *port, const char *prox_maq) {
     client->hints.ai_socktype = SOCK_STREAM;
     client->hints.ai_flags = 0;
     client->hints.ai_protocol = 0;
-
-    if ((rv = getaddrinfo(NULL, port, &(client->hints), &result)) != 0) {
+    
+    if ((rv = getaddrinfo(prox_maq, port, &(client)->hints, &result)) != 0) {
         fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(rv));
         exit(EXIT_FAILURE);
     }
-
+    
     for (r = result; r != NULL; r = r->ai_next) {
-        if ((client->sockfd = inicializa_socket(client)) == ERRO)
+        if ((client->sockfd = inicializa_socket(client)) == ERRO) {
             continue;
+        }
         
         if (connect(client->sockfd, r->ai_addr, r->ai_addrlen) != ERRO)
             break;
@@ -82,6 +83,7 @@ client_server_info *config_server(const char *port) {
     for (r = result; r != NULL; r = r->ai_next) {
         if ((server->sockfd = inicializa_socket(server)) == ERRO)
             continue;
+
 
         if (bind(server->sockfd, r->ai_addr, r->ai_addrlen) == OK)
             break;
