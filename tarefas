@@ -1,0 +1,48 @@
+SERVIDOR:
+while (1)
+{
+    while (bastão == TRUE && "ainda tem tempo")
+        se !vazia_lista
+            envia mensagem e fica "travado" esperando o retorno
+            quando recebe o retorno (foi destravado)
+                se aceitação == 1
+                    retira mensagem do anel
+                se aceitação == 0
+                    se "ainda tem tempo"
+                        reenvia a mensagem e fica "travado" esperando o retorno
+                    senão
+                        envia uma "mensagem de bastão" para o "computer_number + 1"
+                        e marca o seu bastão como FALSE
+        senão
+            envia uma "mensagem de bastão" para o "computer_number + 1"
+            e marca o seu bastão como FALSE
+
+
+    // quer dizer que não enviou o bastão ainda e estourou o tempo
+    se bastão == TRUE
+        envia uma "mensagem de bastão" para o "computer_number + 1"
+        e marca o seu bastão como FALSE
+}
+
+
+CLIENTE:
+while(1)
+{
+    retira a mensagem do socket
+    se mensagem == "mensagem de bastão"
+        marca bastão como TRUE
+        e marca a aceitação como 1
+    senão
+        verifica o destino
+        se destino == computer_number
+            marca aceitação como 1
+            mostra na tela
+            reenvia a mensagem
+        senão
+            segura a mensagem por 1 segundo e repassa
+
+        verifica origem
+        se origem == computer_number
+            "destrava" os que estavam travados no SERVIDOR
+
+}
