@@ -24,10 +24,15 @@ typedef enum {
 
 /* Seção de Definições de Estruturas */
 typedef struct {
+    int confirmacao;
     sem_t full;
     sem_t empty;
     pthread_mutex_t mutex;
     lista *mensagens;
+    sem_t full_repassa;
+    sem_t empty_repassa;
+    pthread_mutex_t mutex_repassa;
+    lista *repassa;
 }produtor_consumidor;
 
 typedef struct {

@@ -8,8 +8,6 @@ int main(const int argc, const char *argv[]) {
     pthread_t prod, cons;
     int n_servidor;
 
-    config_node->threads.mensagens = constroi_lista();
-
     if(argc != 2) {
         fprintf(stderr, "Número invalido de parametros\n");
         exit(EXIT_FAILURE);
@@ -52,11 +50,28 @@ int main(const int argc, const char *argv[]) {
 
     printf("IPADDRESS: %s PORT: %s NUMBER: %d BASTAO: %d\n", config_node->ip_address, config_node->port, config_node->computer_number, config_node->bastao);
 
+    if (atoi(argv[1]) == 4)
+    {
+        pthread_create(&cons, NULL, (void *)&servidor, (void*)config_node);
+        getchar();
+        pthread_create(&prod, NULL, (void *)&cliente, (void*)config_node);
+        pthread_join(prod, NULL);
+        pthread_join(cons, NULL);
+    }
+    else
+    {
+        pthread_create(&prod, NULL, (void *)&cliente, (void*)config_node);
+        pthread_create(&cons, NULL, (void *)&servidor, (void*)config_node);
+        pthread_join(prod, NULL);
+        pthread_join(cons, NULL);
+    }
+
+
+/*
     pthread_create(&prod, NULL, (void *)&cliente, (void*)config_node);
     pthread_create(&cons, NULL, (void *)&servidor, (void*)config_node);
-    
     pthread_join(prod, NULL);
     pthread_join(cons, NULL);
-
+*/
     exit(EXIT_SUCCESS);
 }
