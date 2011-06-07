@@ -35,10 +35,14 @@ client_server_info *config_client(const char *port, const char *prox_maq) {
     client->hints.ai_flags = 0;
     client->hints.ai_protocol = 0;
     
+    puts("CLIENT INIT");
+    
     if ((rv = getaddrinfo(prox_maq, port, &(client)->hints, &result)) != 0) {
         fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(rv));
         exit(EXIT_FAILURE);
     }
+    
+    puts("CLIENT CONFIG");
     
     for (r = result; r != NULL; r = r->ai_next) {
         if ((client->sockfd = inicializa_socket(client)) == ERRO) {
@@ -57,6 +61,8 @@ client_server_info *config_client(const char *port, const char *prox_maq) {
     }
 
     freeaddrinfo(result);
+    
+    puts("CLIENT");
 
     return client;
 }
@@ -97,6 +103,8 @@ client_server_info *config_server(const char *port) {
     }
 
     freeaddrinfo(result);
+
+    puts("SERVER");
 
     if (listen(server->sockfd, 1) == ERRO) {
         int errsv = errno;

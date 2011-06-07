@@ -25,13 +25,15 @@ typedef enum {
 /* Seção de Definições de Estruturas */
 typedef struct {
     int confirmacao;
+    /* Semaforos para a minha lista de envios */
     sem_t full;
     sem_t empty;
-    pthread_mutex_t mutex;
+    pthread_mutex_t mutex;    
     lista *mensagens;
+    /* Semaforos para a lista de repasse */
     sem_t full_repassa;
     sem_t empty_repassa;
-    pthread_mutex_t mutex_repassa;
+    pthread_mutex_t mutex_repassa;    
     lista *repassa;
 }produtor_consumidor;
 

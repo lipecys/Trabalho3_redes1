@@ -1,0 +1,15 @@
+O QUE FAZER AGORA?
+    - Testar o novo formato do programa. Por quê novo formato?
+        R: Pode ser que o problema que dava era por causa do fork, pois ele não
+        compartilha semaforos entre o filho e o pai.
+
+    - Como está agora?
+        R: Temos três threads uma para cliente, uma para servidor e uma para as
+        entradas da linha de comando.
+
+    - O que Felipe deve fazer?
+        R: Testar o programa nas maquinas do dinf e verificar sua consistência.
+        O programa está com alguns puts no meio dele para facilitar o debug, os
+        mesmos estão presentes nas funções de cliente e servidor. Verificar
+        possiveis erros e arrumá-los. Checar semaforos, mutex e parametros
+        diversos para a validação do programa

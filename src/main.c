@@ -1,11 +1,12 @@
 #include "server.h"
+#include "commandLineInterface.h"
 #include "client.h"
 
 /* Função principal - Responsavel por repassar parâmetros e inicializar
  * as threads de leitura e escrita */
 int main(const int argc, const char *argv[]) {
     info_pkg *config_node = inicializa_info();
-    pthread_t prod, cons;
+    pthread_t prod, cons, cli;
     int n_servidor;
 
     if(argc != 2) {
@@ -54,15 +55,19 @@ int main(const int argc, const char *argv[]) {
     {
         pthread_create(&cons, NULL, (void *)&servidor, (void*)config_node);
         getchar();
+        pthread_create(&cli, NULL, (void *)&commandline, (void*)config_node);
         pthread_create(&prod, NULL, (void *)&cliente, (void*)config_node);
         pthread_join(prod, NULL);
+        pthread_join(cli, NULL);
         pthread_join(cons, NULL);
     }
     else
     {
-        pthread_create(&prod, NULL, (void *)&cliente, (void*)config_node);
         pthread_create(&cons, NULL, (void *)&servidor, (void*)config_node);
+        pthread_create(&cli, NULL, (void *)&commandline, (void*)config_node);
+        pthread_create(&prod, NULL, (void *)&cliente, (void*)config_node);
         pthread_join(prod, NULL);
+        pthread_join(cli, NULL);
         pthread_join(cons, NULL);
     }
 
