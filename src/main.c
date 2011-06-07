@@ -24,6 +24,7 @@ int main(const int argc, const char *argv[]) {
             config_node->ip_address = "10.17.110.11";
             config_node->computer_number = '1';
             config_node->bastao = TRUE;
+printf("%d\n", config_node->bastao);
             break;
         case 2:
             printf("2\n");
@@ -49,12 +50,13 @@ int main(const int argc, const char *argv[]) {
 
     config_node->port = "10579";
 
-    printf("IPADDRESS: %s PORT: %s NUMBER: %d BASTAO: %d\n", config_node->ip_address, config_node->port, config_node->computer_number, config_node->bastao);
+    printf("IPADDRESS: %s PORT: %s NUMBER: %d BASTAO: %d\n", config_node->ip_address, config_node->port, atoi(&config_node->computer_number), config_node->bastao);
 
     if (atoi(argv[1]) == 4)
     {
         pthread_create(&cons, NULL, (void *)&servidor, (void*)config_node);
-        getchar();
+//        getchar();
+        sleep(3);
         pthread_create(&cli, NULL, (void *)&commandline, (void*)config_node);
         pthread_create(&prod, NULL, (void *)&cliente, (void*)config_node);
         pthread_join(prod, NULL);

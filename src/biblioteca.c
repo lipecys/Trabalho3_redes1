@@ -9,6 +9,12 @@ info_pkg *inicializa_info(void) {
 
     cria_info->bastao = FALSE;
 
+
+
+    cria_info->threads.confirmacao = 0;
+
+
+
     sem_init(&(cria_info->threads.full), 0, 0);
     sem_init(&(cria_info->threads.empty), 0, MAX_BUFF_SIZE);
     pthread_mutex_init(&(cria_info->threads.mutex), NULL);
